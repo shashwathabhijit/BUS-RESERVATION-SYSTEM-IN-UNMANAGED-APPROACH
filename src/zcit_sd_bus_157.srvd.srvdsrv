@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for Bus Booking'
+define service ZCIT_SD_BUS_157 {
+  expose ZCIT_C_BUS_157  as Booking;
+  expose ZCIT_C_SEAT_157 as Seat;
+}

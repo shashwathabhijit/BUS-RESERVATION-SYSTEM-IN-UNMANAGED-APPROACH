@@ -1,0 +1,42 @@
+//@Metadata.layer: #CORE
+//@UI: {
+//  headerInfo: { typeName: 'Seat', typeNamePlural: 'Seats', title: { type: #STANDARD, label: 'Seat Number', value: 'SeatNumber' } }
+//}
+//annotate entity ZCIT_C_SEAT_157 with 
+//{
+//  @UI.facet: [ { id: 'SeatInfo', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE, label: 'Passenger Info', position: 10 } ]
+//
+//  @UI: { lineItem: [{position: 10}], identification: [{ position: 10 }] }
+//  SeatNumber;
+//  @UI: { lineItem: [{position: 20}], identification: [{ position: 20 }] }
+//  PassengerName;
+//  @UI: { lineItem: [{position: 30, label: 'Seat Type (Window/Aisle)'}], identification: [{ position: 30 }] }
+//  SeatCategory;
+//  @UI: { lineItem: [{position: 40, label: 'ID Proof Upload'}], identification: [{ position: 40, label: 'ID Proof Upload' }] }
+//  Attachment;
+//  
+//  @UI.hidden: true BookingId;
+//  @UI.hidden: true MimeType;
+//  @UI.hidden: true FileName;
+//}
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Seat', typeNamePlural: 'Seats', title: { type: #STANDARD, label: 'Seat Number', value: 'SeatNumber' } }
+}
+annotate entity ZCIT_C_SEAT_157 with 
+{
+  @UI.facet: [ { id: 'SeatInfo', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE, label: 'Passenger Info', position: 10 } ]
+
+  @UI: { lineItem: [{position: 10}], identification: [{ position: 10 }] }
+  SeatNumber;
+  @UI: { lineItem: [{position: 20}], identification: [{ position: 20 }] }
+  PassengerName;
+  @UI: { lineItem: [{position: 30, label: 'Seat Type (Window/Aisle)'}], identification: [{ position: 30 }] }
+  SeatCategory;
+  
+  /* COMPLETELY DISABLED FROM THE UI */
+  @UI.hidden: true Attachment;
+  @UI.hidden: true BookingId;
+  @UI.hidden: true MimeType;
+  @UI.hidden: true FileName;
+}

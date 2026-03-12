@@ -1,0 +1,66 @@
+unmanaged implementation in class zbp_cit_bus_157 unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZCIT_I_BUS_157 alias Booking
+draft table zcit_bhead_157_d
+lock master total etag LocalLastChangedAt
+authorization master ( instance )
+etag master LocalLastChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+  draft action Activate optimized;
+  draft action Discard;
+
+  field ( mandatory: create ) BookingId;
+  field ( readonly: update ) BookingId;
+  field ( readonly ) LocalLastChangedAt;
+
+  association _Seats { create; with draft; }
+
+  mapping for ZCIT_BHEAD_157 {
+    BookingId = booking_id;
+    CustomerName = customer_name;
+    JourneyDate = journey_date;
+    SourceLoc = source_loc;
+    DestLoc = dest_loc;
+    TotalFare = total_fare;
+    Currency = currency;
+    LocalCreatedBy = local_created_by;
+    LocalCreatedAt = local_created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}
+
+define behavior for ZCIT_I_SEAT_157 alias Seat
+implementation in class zbp_cit_seat_157 unique
+draft table zcit_bitem_157_d
+lock dependent by _Booking
+authorization dependent by _Booking
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  field ( readonly: update, mandatory: create ) SeatNumber;
+  field ( readonly ) BookingId;
+  association _Booking { with draft; }
+
+  mapping for ZCIT_BITEM_157 {
+    BookingId = booking_id;
+    SeatNumber = seat_number;
+    PassengerName = passenger_name;
+    SeatCategory = seat_type;
+    Attachment = attachment;
+    MimeType = mimetype;
+    FileName = filename;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

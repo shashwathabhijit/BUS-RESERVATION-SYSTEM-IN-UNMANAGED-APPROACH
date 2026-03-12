@@ -1,0 +1,25 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZCIT_C_BUS_157 alias Booking
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Prepare;
+  use action Resume;
+
+  use association _Seats { create; with draft; }
+}
+
+define behavior for ZCIT_C_SEAT_157 alias Seat
+{
+  use update;
+  use delete;
+  use association _Booking { with draft; }
+}

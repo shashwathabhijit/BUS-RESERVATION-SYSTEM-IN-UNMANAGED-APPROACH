@@ -1,0 +1,24 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Bus Booking', typeNamePlural: 'Bus Bookings', title: { type: #STANDARD, label: 'Booking', value: 'BookingId' } }
+}
+annotate entity ZCIT_C_BUS_157 with 
+{
+  @UI.facet: [ 
+    { id: 'BookingDetails', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE, label: 'Trip Details', position: 10 },
+    { id: 'SeatDetails', purpose: #STANDARD, type: #LINEITEM_REFERENCE, label: 'Passengers & Seats', position: 20, targetElement: '_Seats' } 
+  ]
+
+  @UI: { lineItem: [{position: 10}], identification: [{position: 10}], selectionField: [{position: 10}] }
+  BookingId;
+  @UI: { lineItem: [{position: 20}], identification: [{position: 20}] }
+  CustomerName;
+  @UI: { lineItem: [{position: 30}], identification: [{position: 30}], selectionField: [{position: 30}] }
+  JourneyDate;
+  @UI: { lineItem: [{position: 40}], identification: [{position: 40}] }
+  SourceLoc;
+  @UI: { lineItem: [{position: 50}], identification: [{position: 50}] }
+  DestLoc;
+  @UI: { lineItem: [{position: 60}], identification: [{position: 60}] }
+  TotalFare;
+}
